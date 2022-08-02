@@ -43,10 +43,18 @@
                         {{-- <p>PT. Anugrah Distributor Indonesia adalah sebuah perusahaan care car dan cat semprot yang berlokasi di Jalan Prabu Kian Santang, Tangerang. Perusahaan ini memberikan penyediaan solusi dan layanan perangkat keras serta perangkat lunak tingkat operator yang inovatif. Yang membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang Anda butuhkan.</p> --}}
                     </div>
                 </div>
-                <div class="owl-carousel slide-one-item" style="width: 50%;">
+                <div class="row">
                     @foreach (App\Product::where('category_id', 1)->get() as $item)
-                        <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid" height="5%"
-                            width="5%">
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <p class="card-text">{{ $item->deskripsi }}</p>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -68,10 +76,19 @@
                     </div>
                 </div>
 
-                <div class="owl-carousel slide-one-item" style="width: 50%;">
+                <div class="row">
                     @foreach (App\Product::where('category_id', 2)->get() as $item)
-                        <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid" height="5%"
-                            width="5%">
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <p class="card-text">{{ $item->deskripsi }}</p>
+                                    {{-- <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> --}}
+                                </div>
+                            </div>
+                            <br>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -93,10 +110,18 @@
                     </div>
                 </div>
 
-                <div class="owl-carousel slide-one-item" style="width: 50%;">
-                    @foreach (App\Product::where('category_id',3)->get() as $item)
-                        <img src="{{ asset($item->image) }}" alt="Image" class="img-fluid" height="5%"
-                            width="5%">
+                <div class="row">
+                    @foreach (App\Product::where('category_id', 3)->get() as $item)
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <p class="card-text">{{ $item->deskripsi }}</p>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -114,7 +139,8 @@
 
                     </div>
                     <div class="col-md-4">
-                        <iframe width="650" height="315" src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing">
+                        <iframe width="650" height="315"
+                            src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing">
                         </iframe>
                     </div>
                     <div class="col-md-2">

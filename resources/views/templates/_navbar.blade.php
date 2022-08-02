@@ -4,7 +4,7 @@
           <div class="container">
             <div class="row align-items-center">
               <div class="col-6 col-lg-3">
-                <h1 class="my-0 site-logo"><a href="index.html"><img src="{{ asset('images/event.png') }}" height="20%" width="40%" alt=""></a></h1>
+                <h1 class="my-0 site-logo"><a href="index.html"><img src="{{ asset('images/pmu.jpeg') }}" height="20%" width="40%" alt=""></a></h1>
               </div>
               <div class="col-6 col-lg-9">
                 <nav class="site-navigation text-right" role="navigation">
