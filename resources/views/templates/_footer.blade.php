@@ -16,14 +16,12 @@
              
               <div class="row mb-5">
                 <div class="col-md-12">
-                  <h3 class="footer-heading mb-4">Navigation</h3>
+                  <h3 class="footer-heading mb-4">Hubungi Kami</h3>
                 </div>
                 <div class="col-md-6 col-lg-6">
                   <ul class="list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Book Author</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#" >Team</a></li>
+                    <li><a href="https://web.whatsapp.com/send?phone=6285219101848" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" width="30%" height="30%" alt="">Whatsapp</a></li>
+                   
                   </ul>
                 </div>
                 
@@ -35,19 +33,20 @@
             <div class="col-lg-4 mb-5 mb-lg-0" id="contact-section">
   
               <div class="mb-5">
-                <h3 class="footer-heading mb-4">Quick Contact</h3>
-                <form method="post" class="form-subscribe">
+                <h3 class="footer-heading mb-4">Quick Order</h3>
+                <form method="post" action="{{ route('orders.store') }}" class="form-subscribe">
+                  @csrf
                   <div class="form-group mb-3">
-                    <input type="text" class="form-control border-white text-white bg-transparent" placeholder="Name" aria-label="Enter Email" aria-describedby="button-addon2">
+                    <input type="text" class="form-control border-white text-white bg-transparent" name="name" placeholder="Name" aria-label="Enter Email" aria-describedby="button-addon2">
                   </div>
                   <div class="form-group mb-3">
-                    <input type="text" class="form-control border-white text-white bg-transparent" placeholder="Enter email" aria-label="Enter Email" aria-describedby="button-addon2">
+                    <input type="text" class="form-control border-white text-white bg-transparent" name="telp" placeholder="Telepon" aria-label="Enter Email" aria-describedby="button-addon2">
                   </div>
                   <div class="form-group mb-3">
-                    <textarea name="" class="form-control" id="" cols="30" rows="4" placeholder="Your message"></textarea>
+                    <textarea class="form-control" id="" name="address" cols="30" rows="4" placeholder="Your address"></textarea>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary px-5" type="submit">Send Message</button>
+                    <button class="btn btn-primary px-5" type="submit">Send Order</button>
                   </div>
                 </form>
   

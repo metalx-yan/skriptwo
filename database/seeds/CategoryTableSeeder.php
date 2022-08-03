@@ -25,5 +25,10 @@ class CategoryTableSeeder extends Seeder
             'name' => 'furniture',
             'flag' => 3
         ]);
+
+        App\Category::create([
+            'name' => 'finishing',
+            'flag' => 4
+        ]);
     }
 }

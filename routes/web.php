@@ -22,6 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
 });
+Route::resource('orders', 'OrderController');
 
 Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], function() {
 

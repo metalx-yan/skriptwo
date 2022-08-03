@@ -49,7 +49,9 @@
                             <div class="card" style="width: 18rem;">
                                 <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <center>
+                                        <h5 class="card-title">{{ $item->header }}</h5>
+                                    </center>
                                     <p class="card-text">{{ $item->deskripsi }}</p>
                                 </div>
                             </div>
@@ -82,7 +84,9 @@
                             <div class="card" style="width: 18rem;">
                                 <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <center>
+                                        <h5 class="card-title">{{ $item->header }}</h5>
+                                    </center>
                                     <p class="card-text">{{ $item->deskripsi }}</p>
                                     {{-- <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> --}}
                                 </div>
@@ -116,7 +120,44 @@
                             <div class="card" style="width: 18rem;">
                                 <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <center><h5 class="card-title">{{ $item->header }}</h5></center>
+                                    <center>
+                                        <h5 class="card-title">{{ $item->header }}</h5>
+                                    </center>
+                                    <p class="card-text">{{ $item->deskripsi }}</p>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section" id="finishing">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-7">
+                        <h2 class="heading">Finishing</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, harum repudiandae provident
+                            neque voluptas odio nostrum officiis debitis et vitae, dolorem placeat fugiat recusandae
+                            aperiam aspernatur expedita alias, officia. Suscipit!</p>
+                        <p class="mb-3">
+                            <a href="#" class="customNextBtn">Prev</a>
+                            <span class="mx-2">/</span>
+                            <a href="#" class="customPrevBtn">Next</a>
+                        </p> --}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach (App\Product::where('category_id', 4)->get() as $item)
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <center>
+                                        <h5 class="card-title">{{ $item->header }}</h5>
+                                    </center>
                                     <p class="card-text">{{ $item->deskripsi }}</p>
                                 </div>
                             </div>
@@ -135,13 +176,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-4">
 
                     </div>
                     <div class="col-md-4">
-                        <iframe width="650" height="315"
-                            src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing">
-                        </iframe>
+
+                        <video controls="controls" class="video-stream" x-webkit-airplay="allow"
+                            data-youtube-id="N9oxmRT2YWw"
+                            src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing"></video>
                     </div>
                     <div class="col-md-2">
 
@@ -150,7 +192,7 @@
             </div>
         </div>
 
-        <div class="site-section py-5 bg-primary">
+        {{-- <div class="site-section py-5 bg-primary">
             <div class="container">
                 <h3 class="text-white h4 mb-3 ml-3">Subscribe For The New Updates</h3>
                 <div class="d-flex">
@@ -158,7 +200,7 @@
                     <input type="submit" class="btn btn-white px-4" value="Send Email">
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         @include('templates._footer')
         @include('templates._javascript')
