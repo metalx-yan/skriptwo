@@ -21,6 +21,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
+    Route::resource('furnitures', 'FurnitureController');
+    Route::resource('finishings', 'FinishingController');
+    Route::resource('designs', 'DesignController');
+    // Route::resource('orders', 'OrderController');
+    Route::delete('/delete/{id}', 'OrderController@drop')->name('orders.drop');
+
+    Route::get('/lists/order', 'OrderController@lists')->name('lists.order');
+    // Route::get('/designs/index', 'DesignController@designs')->name('designs.index');
+
 });
 Route::resource('orders', 'OrderController');
 

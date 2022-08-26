@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
-use Carbon\Carbon;
+use App\Product;
 
-class OrderController extends Controller
+class DesignController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $all = Order::all();
-        // return view('orders.index', compact('all'));
-    }
+        $all = Product::where('category_id', 1)->get();
+        // $all = Product::all();
 
-    public function lists()
-    {
-        $all = Order::all();
-        return view('orders.index', compact('all'));
+        return view('designs.index', compact('all'));
     }
 
     /**
@@ -32,7 +27,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        return view('designs.create');
     }
 
     /**
@@ -43,15 +38,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Order::create([
-            'name' => $request->name,
-            'telp' => $request->telp,
-            'address' => $request->address,
-            'email' => $request->email,
+        $image = $request->file('image');
+        $gambar = time().'.'.$image->getClientOriginalExtension();
+        // dd(public_path('images').$gambar, $request->all());
+
+        Product::create([
+            'image' => $request->image->move('images/',$gambar),
+            'header' => $request->header,
+            'deskripsi' => $request->deskripsi,
+            'category_id' => $request->category_id,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('designs.index');
     }
 
     /**
@@ -62,9 +60,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $get = Order::find($id);
-
-        return view('orders.view', compact('get'));
+        //
     }
 
     /**
@@ -75,9 +71,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $get = Order::find($id);
+        $get = Product::find($id);
 
-        return view('orders.edit', compact('get'));
+        return view('designs.edit', compact('get'));
     }
 
     /**
@@ -89,11 +85,20 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = Order::find($id);
-        $update->name = $request->name;
+        $update = Product::find($id);
+        if ($request->image == null) {
+        } else {
+            unlink($update->image);
+            $image = $request->file('image');
+            $gambar = time().'.'.$image->getClientOriginalExtension();
+            $update->image = $request->image->move('images/',$gambar);
+        }
+        $update->category_id = $request->category_id;
+        $update->header = $request->header;
+        $update->deskripsi = $request->deskripsi;
         $update->save();
 
-        return redirect()->route('orders.index');
+        return redirect()->route('designs.index');
     }
 
     /**
@@ -104,15 +109,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $get = Order::find($id);
-        $get->delete();
-
-        return redirect()->back();
-    }
-
-    public function drop($id)
-    {
-        $get = Order::find($id);
+        $get = Product::find($id);
+        unlink($get->image);
         $get->delete();
 
         return redirect()->back();

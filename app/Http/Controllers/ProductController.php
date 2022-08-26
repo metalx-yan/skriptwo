@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $all = Product::all();
+        $all = Product::where('category_id', 2)->get();
 
         return view('products.index', compact('all'));
     }

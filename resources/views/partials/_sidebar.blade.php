@@ -25,7 +25,12 @@
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 {{-- <li><a href="{{ route('categories.index') }}">Data Category</a></li> --}}
+                                {{-- <li><a href="{{ route('products.index') }}">Data Product</a></li> --}}
+                                <li><a href="{{ route('designs.index') }}">Data Design Interior</a></li>
                                 <li><a href="{{ route('products.index') }}">Data Product</a></li>
+                                <li><a href="{{ route('furnitures.index') }}">Data Furniture</a></li>
+                                <li><a href="{{ route('finishings.index') }}">Data Finishing</a></li>
+                                <li><a href="{{ route('lists.order') }}">Data Order</a></li>
                             </ul>
                         </li>
                         {{-- <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>

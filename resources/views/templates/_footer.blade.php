@@ -33,7 +33,7 @@
             <div class="col-lg-4 mb-5 mb-lg-0" id="contact-section">
   
               <div class="mb-5">
-                <h3 class="footer-heading mb-4">Quick Order</h3>
+                <h3 class="footer-heading mb-4">Form Order</h3>
                 <form method="post" action="{{ route('orders.store') }}" class="form-subscribe">
                   @csrf
                   <div class="form-group mb-3">
@@ -41,6 +41,9 @@
                   </div>
                   <div class="form-group mb-3">
                     <input type="text" class="form-control border-white text-white bg-transparent" name="telp" placeholder="Telepon" aria-label="Enter Email" aria-describedby="button-addon2">
+                  </div>
+                  <div class="form-group mb-3">
+                    <input type="text" class="form-control border-white text-white bg-transparent" name="email" placeholder="Email" aria-label="Enter Email" aria-describedby="button-addon2">
                   </div>
                   <div class="form-group mb-3">
                     <textarea class="form-control" id="" name="address" cols="30" rows="4" placeholder="Your address"></textarea>
