@@ -30,7 +30,7 @@
                         <label for="">Kategori</label>
                         <select name="category_id" id="" class="form-control" required>
                             <option value="">Select Kategori</option>
-                            @foreach (App\Category::all() as $cat)
+                            @foreach (App\Category::where('id',2)->get() as $cat)
                                 <option value="{{ $cat->flag }}">{{ $cat->name }}</option>
                             @endforeach
                         </select>

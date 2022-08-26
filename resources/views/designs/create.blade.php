@@ -18,7 +18,7 @@
 
         </div>
         <div class="card-body">
-            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('designs.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-3">
@@ -50,7 +50,7 @@
                 </div>
                     <br>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    <a href="{{ route('products.index') }}" class="btn btn-warning btn-sm">Back</a>
+                    <a href="{{ route('designs.index') }}" class="btn btn-warning btn-sm">Back</a>
             </form>
         </div>
     </div>

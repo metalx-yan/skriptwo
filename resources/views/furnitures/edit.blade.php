@@ -18,7 +18,7 @@
 
         </div>
         <div class="card-body">
-            <form action="{{ route('products.update', $get->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('furnitures.update', $get->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -31,7 +31,7 @@
                         <label for="">Kategori</label>
                         <select name="category_id" id="" class="form-control" required>
                             <option value="">Select Kategori</option>
-                            @foreach (App\Category::all() as $cat)
+                            @foreach (App\Category::where('id',3)->get() as $cat)
                                 <option value="{{ $cat->flag }}" {{$get->category_id == $cat->flag ? 'selected' : '' }}>{{ $cat->name }}</option>
                             @endforeach
                         </select>
@@ -51,7 +51,7 @@
                 </div>
                     <br>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    <a href="{{ route('products.index') }}" class="btn btn-warning btn-sm">Back</a>
+                    <a href="{{ route('furnitures.index') }}" class="btn btn-warning btn-sm">Back</a>
             </form>
         </div>
     </div>

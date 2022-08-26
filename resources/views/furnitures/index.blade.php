@@ -21,7 +21,7 @@
             $no = 1;
         @endphp
         <div class="card-body">
-            <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">Tambah Product</a>
+            <a href="{{ route('furnitures.create') }}" class="btn btn-primary btn-sm">Tambah Furniture</a>
             <br>
             <br>
             <table class="table border" id="myTable">
@@ -46,11 +46,11 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <a href="{{ route('products.edit', $item->id ) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('furnitures.edit', $item->id ) }}" class="btn btn-warning btn-sm">Edit</a>
                                     </div>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-2">
-                                        <form action="{{ route('products.destroy', $item->id) }}" method="post">
+                                        <form action="{{ route('furnitures.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to Remove?');">Delete</button>
