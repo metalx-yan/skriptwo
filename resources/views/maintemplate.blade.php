@@ -17,23 +17,43 @@
 
         @include('templates._navbar')
 
-        <div class="site-section" id="beranda">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                        <h1 class="text-white serif text-uppercase mb-4"><br></h1>
-                        <p class="text-white mb-5"><br></p>
-                        <p><a href="#" class="btn btn-white px-4 py-3"></a></p>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        {{-- <img src="{{ asset('images/book_1.png') }}" alt="Image" class="img-fluid"> --}}
+        {{-- <div class="site-section" id="beranda"> --}}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('images/slide_1.jpeg') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('images/slide_2.jpeg') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('images/slide_3.jpeg') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('images/slide_4.jpeg') }}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('images/slide_5.jpeg') }}" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        {{-- <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </button> --}}
                     </div>
                 </div>
             </div>
         </div>
+        {{-- </div> --}}
 
         <div class="site-section bg-light" id="design">
             <div class="container">
@@ -43,39 +63,27 @@
                         {{-- <p>PT. Anugrah Distributor Indonesia adalah sebuah perusahaan care car dan cat semprot yang berlokasi di Jalan Prabu Kian Santang, Tangerang. Perusahaan ini memberikan penyediaan solusi dan layanan perangkat keras serta perangkat lunak tingkat operator yang inovatif. Yang membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang Anda butuhkan.</p> --}}
                     </div>
                 </div>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-
-                        @foreach (App\Product::where('category_id', 1)->get() as $index => $item)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img class="d-block w-100" src="{{ asset($item->image) }}" alt="" width="50%"
-                                    height="40%">
+                <div class="row">
+                    @foreach (App\Product::where('category_id', 1)->get() as $index => $item)
+                        {{-- <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img class="d-block w-100" src="{{ asset($item->image) }}" alt="" width="50%"
+                            height="40%">
+                    </div> --}}
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <center>
+                                        <h5 class="card-title">{{ $item->header }}</h5>
+                                    </center>
+                                    <p class="card-text">{{ $item->deskripsi }}</p>
+                                </div>
                             </div>
-                            {{-- <div class="col-md-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <center>
-                                                <h5 class="card-title">{{ $item->header }}</h5>
-                                            </center>
-                                            <p class="card-text">{{ $item->deskripsi }}</p>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div> --}}
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                            <br>
+                        </div>
+                    @endforeach
+
                 </div>
-
-
             </div>
         </div>
 
@@ -96,40 +104,11 @@
                 </div>
 
                 <div class="row">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-
-                            @foreach (App\Product::where('category_id', 2)->get() as $index => $item)
-                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                    <img class="d-block w-100" src="{{ asset($item->image) }}" alt=""
-                                        width="50%" height="40%">
-                                </div>
-                                {{-- <div class="col-md-4">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <center>
-                                                    <h5 class="card-title">{{ $item->header }}</h5>
-                                                </center>
-                                                <p class="card-text">{{ $item->deskripsi }}</p>
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </div> --}}
-                            @endforeach
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    {{-- @foreach (App\Product::where('category_id', 2)->get() as $item)
+                    @foreach (App\Product::where('category_id', 2)->get() as $index => $item)
+                        {{-- <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img class="d-block w-100" src="{{ asset($item->image) }}" alt="" width="50%"
+                            height="40%">
+                    </div> --}}
                         <div class="col-md-4">
                             <div class="card" style="width: 18rem;">
                                 <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
@@ -138,7 +117,13 @@
                                         <h5 class="card-title">{{ $item->header }}</h5>
                                     </center>
                                     <p class="card-text">{{ $item->deskripsi }}</p>
-                                    {{-- <a href="#" class="btn btn-primary stretched-link">Go somewhere</a> --}}
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    @endforeach
+
+
                 </div>
             </div>
             <br>
@@ -152,52 +137,18 @@
             <div class="row mb-5">
                 <div class="col-md-7">
                     <h2 class="heading">Furniture</h2>
-                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, harum repudiandae provident
-                            neque voluptas odio nostrum officiis debitis et vitae, dolorem placeat fugiat recusandae
-                            aperiam aspernatur expedita alias, officia. Suscipit!</p>
-                        <p class="mb-3">
-                            <a href="#" class="customNextBtn">Prev</a>
-                            <span class="mx-2">/</span>
-                            <a href="#" class="customPrevBtn">Next</a>
-                        </p> --}}
+
                 </div>
             </div>
 
             <div class="row">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
 
-                        @foreach (App\Product::where('category_id', 3)->get() as $index => $item)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+
+                @foreach (App\Product::where('category_id', 3)->get() as $index => $item)
+                    {{-- <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                                 <img class="d-block w-100" src="{{ asset($item->image) }}" alt="" width="50%"
                                     height="40%">
-                            </div>
-                            {{-- <div class="col-md-4">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <center>
-                                                    <h5 class="card-title">{{ $item->header }}</h5>
-                                                </center>
-                                                <p class="card-text">{{ $item->deskripsi }}</p>
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </div> --}}
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                        data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-                {{-- @foreach (App\Product::where('category_id', 3)->get() as $item)
+                            </div> --}}
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
@@ -210,9 +161,12 @@
                         </div>
                         <br>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
+
+
         </div>
+    </div>
     </div>
 
     <div class="site-section" id="finishing">
@@ -220,52 +174,16 @@
             <div class="row mb-5">
                 <div class="col-md-7">
                     <h2 class="heading">Finishing</h2>
-                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, harum repudiandae provident
-                            neque voluptas odio nostrum officiis debitis et vitae, dolorem placeat fugiat recusandae
-                            aperiam aspernatur expedita alias, officia. Suscipit!</p>
-                        <p class="mb-3">
-                            <a href="#" class="customNextBtn">Prev</a>
-                            <span class="mx-2">/</span>
-                            <a href="#" class="customPrevBtn">Next</a>
-                        </p> --}}
+
                 </div>
             </div>
 
             <div class="row">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-
-                        @foreach (App\Product::where('category_id', 4)->get() as $index => $item)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img class="d-block w-100" src="{{ asset($item->image) }}" alt=""
-                                    width="50%" height="40%">
-                            </div>
-                            {{-- <div class="col-md-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <center>
-                                                <h5 class="card-title">{{ $item->header }}</h5>
-                                            </center>
-                                            <p class="card-text">{{ $item->deskripsi }}</p>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div> --}}
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                        data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-                {{-- @foreach (App\Product::where('category_id', 4)->get() as $item)
+                @foreach (App\Product::where('category_id', 4)->get() as $index => $item)
+                    {{-- <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    <img class="d-block w-100" src="{{ asset($item->image) }}" alt="" width="50%"
+                        height="40%">
+                </div> --}}
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ asset($item->image) }}" class="card-img-top" alt="...">
@@ -278,12 +196,13 @@
                         </div>
                         <br>
                     </div>
-                @endforeach --}}
+                @endforeach
+
             </div>
         </div>
     </div>
 
-    <div class="site-section bg-light" id="jadwal-test">
+    <div class="site-section bg-light" id="video">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12">
@@ -296,9 +215,15 @@
                 </div>
                 <div class="col-md-4">
 
-                    <video controls="controls" class="video-stream" x-webkit-airplay="allow"
+                    {{-- <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+                    </iframe> --}}
+                    <iframe width="420" height="315"
+                        src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing">
+                    </iframe>
+                    {{-- <video controls="controls" class="video-stream" x-webkit-airplay="allow"
                         data-youtube-id="N9oxmRT2YWw"
-                        src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing"></video>
+                        src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing"></video> --}}
                 </div>
                 <div class="col-md-2">
 

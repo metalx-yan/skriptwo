@@ -20,9 +20,10 @@
                       <li><a href="#design" class="nav-link" style="color:cornflowerblue">Design Interior</a></li>
                       <li><a href="#product" class="nav-link" style="color:cornflowerblue">Product</a></li>
                       <li><a href="#furniture" class="nav-link" style="color:cornflowerblue">Furniture</a></li>
+                      <li><a href="#finishing" class="nav-link" style="color:cornflowerblue">Finishing</a></li>
                       {{-- <li><a href="#lowongan-kerja" class="nav-link" style="color:cornflowerblue">Video Product</a></li> --}}
                       {{-- <li><a href="#jadwal-test" class="nav-link" style="color:cornflowerblue">Videos</a></li> --}}
-                      <li><a href="#hasil" class="nav-link" style="color:cornflowerblue">Video Product</a></li>
+                      <li><a href="#video" class="nav-link" style="color:cornflowerblue">Video Product</a></li>
                     </ul>
                   </div>
                 </nav>
