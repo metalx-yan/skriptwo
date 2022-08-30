@@ -219,7 +219,7 @@
                         src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
                     </iframe> --}}
                     <iframe width="420" height="315"
-                        src="https://www.youtube.com/watch?v=zyd5kRisWfc&ab_channel=BrocoHomeFurnishing">
+                        src="https://www.youtube.com/watch?v=zyd5kRisWfc&feature=youtu.be">
                     </iframe>
                     {{-- <video controls="controls" class="video-stream" x-webkit-airplay="allow"
                         data-youtube-id="N9oxmRT2YWw"
