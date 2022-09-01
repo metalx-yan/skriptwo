@@ -60,6 +60,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/design', function () {
+
+    return view('design');
+});
+
+Route::get('/furniture', function () {
+
+    return view('furniture');
+});
+
+Route::get('/finishing', function () {
+
+    return view('finishing');
+});
+
+Route::get('/video', function () {
+
+    return view('video');
+});
+
+Route::get('/product', function () {
+
+    return view('product');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
