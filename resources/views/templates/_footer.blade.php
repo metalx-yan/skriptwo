@@ -21,7 +21,7 @@
                 <div class="col-md-6 col-lg-6">
                   <ul class="list-unstyled">
                     <li><a href="https://web.whatsapp.com/send?phone=6285219101848" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" width="30%" height="30%" alt="">Whatsapp</a></li>
-                   
+                    <li><a href="https://www.instagram.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" width="30%" height="30%"  alt="">Instagram</a></li>
                   </ul>
                 </div>
                 
