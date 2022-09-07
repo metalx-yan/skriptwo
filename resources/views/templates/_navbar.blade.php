@@ -24,6 +24,7 @@
                       {{-- <li><a href="/lowongan-kerja" class="nav-link" style="color:cornflowerblue">Video Product</a></li> --}}
                       {{-- <li><a href="/jadwal-test" class="nav-link" style="color:cornflowerblue">Videos</a></li> --}}
                       <li><a href="/video" class="nav-link" style="color:cornflowerblue">Video Product</a></li>
+                      <li><a href="#about" class="nav-link" style="color:cornflowerblue">Form Order</a></li>
                     </ul>
                   </div>
                 </nav>
