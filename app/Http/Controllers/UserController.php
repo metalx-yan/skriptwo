@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\User;
+use Carbon\Carbon;
 
-class FinishingController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,8 @@ class FinishingController extends Controller
      */
     public function index()
     {
-        $all = Product::where('category_id', 4)->get();
-        // $all = Product::all();
-
-        return view('finishings.index', compact('all'));
+        $all = User::all();
+        return view('users.index', compact('all'));
     }
 
     /**
@@ -27,7 +26,7 @@ class FinishingController extends Controller
      */
     public function create()
     {
-        return view('finishings.create');
+        return view('users.create');
     }
 
     /**
@@ -38,18 +37,17 @@ class FinishingController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image');
-        $gambar = time().'.'.$image->getClientOriginalExtension();
-        // dd(public_path('images').$gambar, $request->all());
-
-        Product::create([
-            'image' => $request->image->move('images/',$gambar),
-            'header' => $request->header,
-            'deskripsi' => $request->deskripsi,
-            'category_id' => $request->category_id,
+        // dd($request->all(),str_replace(' ','',$request->username));
+        User::create([
+            'name' => $request->username,
+            'username' => str_replace(' ','',$request->username),
+            'password' => $request->password,
+            'role_id' => $request->role_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('finishings.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -71,9 +69,9 @@ class FinishingController extends Controller
      */
     public function edit($id)
     {
-        $get = Product::find($id);
+        $get = User::find($id);
 
-        return view('finishings.edit', compact('get'));
+        return view('users.edit', compact('get'));
     }
 
     /**
@@ -85,20 +83,15 @@ class FinishingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = Product::find($id);
-        if ($request->image == null) {
-        } else {
-            unlink($update->image);
-            $image = $request->file('image');
-            $gambar = time().'.'.$image->getClientOriginalExtension();
-            $update->image = $request->image->move('images/',$gambar);
-        }
-        $update->category_id = $request->category_id;
-        $update->header = $request->header;
-        $update->deskripsi = $request->deskripsi;
+        $update = User::find($id);
+        $update->name = str_replace(' ', '', $request->username);
+        $update->username = $request->username;
+        $update->password = $request->password;
+        $update->role_id = $request->role_id;
+        $update->updated_at = Carbon::now();
         $update->save();
 
-        return redirect()->route('finishings.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -109,8 +102,7 @@ class FinishingController extends Controller
      */
     public function destroy($id)
     {
-        $get = Product::find($id);
-        unlink($get->image);
+        $get = User::find($id);
         $get->delete();
 
         return redirect()->back();

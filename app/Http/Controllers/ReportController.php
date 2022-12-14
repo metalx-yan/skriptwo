@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Report;
 
-class DesignController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class DesignController extends Controller
      */
     public function index()
     {
-        $all = Product::where('category_id', 1)->get();
-        // $all = Product::all();
-
-        return view('designs.index', compact('all'));
+        $all = Report::all();
+        return view('reports.index', compact('all'));
     }
 
     /**
@@ -27,7 +25,13 @@ class DesignController extends Controller
      */
     public function create()
     {
-        return view('designs.create');
+        return view('reports.create');
+    }
+
+    public function report()
+    {
+        $all = Report::all();
+        return view('reports.barang', compact('all'));
     }
 
     /**
@@ -38,18 +42,14 @@ class DesignController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image');
-        $gambar = time().'.'.$image->getClientOriginalExtension();
-        // dd(public_path('images').$gambar, $request->all());
 
-        Product::create([
-            'image' => $request->image->move('images/',$gambar),
-            'header' => $request->header,
-            'deskripsi' => $request->deskripsi,
-            'category_id' => $request->category_id,
+        Report::create([
+            'nomorbarang' => $request->nomorbarang,
+            'namabarang' => $request->namabarang,
+            'kuantitas' => $request->kuantitas,
         ]);
 
-        return redirect()->route('designs.index');
+        return redirect()->route('reports.index');
     }
 
     /**
@@ -71,9 +71,8 @@ class DesignController extends Controller
      */
     public function edit($id)
     {
-        $get = Product::find($id);
-
-        return view('designs.edit', compact('get'));
+        $get = Report::find($id);
+        return view('reports.edit', compact('get'));
     }
 
     /**
@@ -85,20 +84,13 @@ class DesignController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = Product::find($id);
-        if ($request->image == null) {
-        } else {
-            unlink($update->image);
-            $image = $request->file('image');
-            $gambar = time().'.'.$image->getClientOriginalExtension();
-            $update->image = $request->image->move('images/',$gambar);
-        }
-        $update->category_id = $request->category_id;
-        $update->header = $request->header;
-        $update->deskripsi = $request->deskripsi;
+        $update = Report::find($id);
+        $update->namabarang = $request->namabarang;
+        $update->nomorbarang = $request->nomorbarang;
+        $update->kuantitas = $request->kuantitas;
         $update->save();
 
-        return redirect()->route('designs.index');
+        return redirect()->route('reports.index');
     }
 
     /**
@@ -109,8 +101,7 @@ class DesignController extends Controller
      */
     public function destroy($id)
     {
-        $get = Product::find($id);
-        unlink($get->image);
+        $get = Report::find($id);
         $get->delete();
 
         return redirect()->back();

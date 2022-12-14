@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
-use Carbon\Carbon;
+use App\Stock;
 
-class OrderController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $all = Order::all();
-        // return view('orders.index', compact('all'));
-    }
-
-    public function lists()
-    {
-        $all = Order::all();
-        return view('orders.index', compact('all'));
+        $all = Stock::all();
+        return view('stocks.index', compact('all'));
     }
 
     /**
@@ -32,7 +25,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        return view('stocks.create');
     }
 
     /**
@@ -43,15 +36,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Order::create([
-            'name' => $request->name,
-            'telp' => $request->telp,
-            'address' => $request->address,
-            'email' => $request->email,
+
+        Stock::create([
+            'nopo' => $request->nopo,
+            'tanggalpo' => $request->tanggalpo,
+            'nomorbarang' => $request->nomorbarang,
+            'namabarang' => $request->namabarang,
+            'kuantitas' => $request->kuantitas,
+            'supplier' => $request->supplier,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -62,9 +57,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $get = Order::find($id);
-
-        return view('orders.view', compact('get'));
+        //
     }
 
     /**
@@ -75,9 +68,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $get = Order::find($id);
-
-        return view('orders.edit', compact('get'));
+        $get = Stock::find($id);
+        return view('stocks.edit', compact('get'));
     }
 
     /**
@@ -89,11 +81,16 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = Order::find($id);
-        $update->name = $request->name;
+        $update = Stock::find($id);
+        $update->nopo = $request->nopo;
+        $update->tanggalpo = $request->tanggalpo;
+        $update->namabarang = $request->namabarang;
+        $update->nomorbarang = $request->nomorbarang;
+        $update->kuantitas = $request->kuantitas;
+        $update->supplier = $request->supplier;
         $update->save();
 
-        return redirect()->route('orders.index');
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -104,15 +101,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $get = Order::find($id);
-        $get->delete();
-
-        return redirect()->back();
-    }
-
-    public function drop($id)
-    {
-        $get = Order::find($id);
+        $get = Stock::find($id);
         $get->delete();
 
         return redirect()->back();
