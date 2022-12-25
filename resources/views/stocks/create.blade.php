@@ -33,12 +33,24 @@
                     </div>
                     <div class="col-md-3">
                         <label for="">Nomor Barang</label>
-                        <input type="text" name="nomorbarang" class="form-control {{ $errors->has('nomorbarang') ? 'is-invalid' : ''}}" required>
+                        <select name="nomorbarang" class="form-control">
+                            <option value=""></option>
+                            @foreach (App\Report::all() as $kode_barang)
+                                <option value="{{ $kode_barang->nomorbarang }}">{{ $kode_barang->nomorbarang }}</option>
+                            @endforeach
+                        </select>
+                        {{-- <input type="text" name="nomorbarang" class="form-control {{ $errors->has('nomorbarang') ? 'is-invalid' : ''}}" required> --}}
                         {!! $errors->first('nomorbarang', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
                     <div class="col-md-3">
                         <label for="">Nama Barang</label>
-                        <input type="text" name="namabarang" class="form-control {{ $errors->has('namabarang') ? 'is-invalid' : ''}}" required>
+                        {{-- <input type="text" name="namabarang" class="form-control {{ $errors->has('namabarang') ? 'is-invalid' : ''}}" required> --}}
+                        <select name="namabarang" class="form-control">
+                            <option value=""></option>
+                            @foreach (App\Report::all() as $nama_barang)
+                                <option value="{{ $nama_barang->namabarang }}">{{ $nama_barang->namabarang }}</option>
+                            @endforeach
+                        </select>
                         {!! $errors->first('namabarang', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
                     <div class="col-md-3">
@@ -48,7 +60,13 @@
                     </div>
                     <div class="col-md-3">
                         <label for="">Supplier</label>
-                        <input type="text" name="supplier" class="form-control {{ $errors->has('supplier') ? 'is-invalid' : ''}}" required>
+                        {{-- <input type="text" name="supplier" class="form-control {{ $errors->has('supplier') ? 'is-invalid' : ''}}" required> --}}
+                        <select name="supplier" class="form-control">
+                            <option value=""></option>
+                            @foreach (App\Supplier::all() as $supplier)
+                                <option value="{{ $supplier->name }}">{{ $supplier->name }}</option>
+                            @endforeach
+                        </select>
                         {!! $errors->first('supplier', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
                 </div>

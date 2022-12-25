@@ -22,6 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('users', 'UserController');
     Route::resource('stocks', 'StockController');
     Route::resource('reports', 'ReportController');
+    Route::resource('suppliers', 'SupplierController');
 
     // Route::resource('orders', 'OrderController');
     Route::get('/report/barang', 'ReportController@report')->name('report.barang');

@@ -27,6 +27,7 @@
                                 <li><a href="{{ route('users.index') }}">Account</a></li>
                                 <li><a href="{{ route('stocks.index') }}">Request Stock</a></li>
                                 <li><a href="{{ route('reports.index') }}">Barang</a></li>
+                                <li><a href="{{ route('suppliers.index') }}">Supplier</a></li>
                                 <li><a href="{{ route('report.barang') }}">Report</a></li>
                             </ul>
                         </li>
