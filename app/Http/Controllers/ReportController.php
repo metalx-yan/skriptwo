@@ -63,6 +63,12 @@ class ReportController extends Controller
         //
     }
 
+
+    public function reportzz(Request $request)
+    {
+        $get = Report::find($request->id);
+        return json_encode($get);
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 
     // Route::resource('orders', 'OrderController');
     Route::get('/report/barang', 'ReportController@report')->name('report.barang');
+    Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
 
 });
 Route::resource('orders', 'OrderController');
