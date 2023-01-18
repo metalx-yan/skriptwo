@@ -42,7 +42,8 @@
                             <input type="text" readonly id="status" class="form-control">
                         </div>
                     </div>
-                    <br><hr>
+                    <br>
+                    <hr>
                     <figure class="highcharts-figure">
                         <div id="container"></div>
                     </figure>
@@ -61,90 +62,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
-
-            Highcharts.chart('container', {
-
-                title: {
-                    text: 'Chart Barang',
-                    align: 'left'
-                },
-
-                subtitle: {
-                    text: '',
-                    align: 'left'
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'Number'
-                    }
-                },
-
-                xAxis: {
-                    accessibility: {
-                        rangeDescription: ''
-                    }
-                },
-
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        label: {
-                            connectorAllowed: false
-                        },
-                        pointStart: 2010
-                    }
-                },
-
-                series: [{
-                    name: 'Installation & Developers',
-                    data: [43934, 48656, 65165, 81827, 112143, 142383,
-                        171533, 165174, 155157, 161454, 154610
-                    ]
-                }, {
-                    name: 'Manufacturing',
-                    data: [24916, 37941, 29742, 29851, 32490, 30282,
-                        38121, 36885, 33726, 34243, 31050
-                    ]
-                }, {
-                    name: 'Sales & Distribution',
-                    data: [11744, 30000, 16005, 19771, 20185, 24377,
-                        32147, 30912, 29243, 29213, 25663
-                    ]
-                }, {
-                    name: 'Operations & Maintenance',
-                    data: [null, null, null, null, null, null, null,
-                        null, 11164, 11218, 10077
-                    ]
-                }, {
-                    name: 'Other',
-                    data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
-                        17300, 13053, 11906, 10073
-                    ]
-                }],
-
-                responsive: {
-                    rules: [{
-                        condition: {
-                            maxWidth: 500
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
-                        }
-                    }]
-                }
-
-            });
 
         });
     </script>
@@ -169,6 +86,7 @@
                     console.log(data)
                     if (data == null) {
                         $('#qty').val('')
+                        $('#status').val('')
                     } else {
                         $('#qty').val(data.kuantitas + ' Kg')
                         if (data.kuantitas > '200') {
@@ -178,6 +96,71 @@
                         }
 
                     }
+
+                    $('#myTable').DataTable();
+
+                    Highcharts.chart('container', {
+
+                        title: {
+                            text: 'Chart Barang',
+                            align: 'left'
+                        },
+
+                        subtitle: {
+                            text: '',
+                            align: 'left'
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Number'
+                            }
+                        },
+
+                        xAxis: {
+                            accessibility: {
+                                rangeDescription: ''
+                            }
+                        },
+
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle'
+                        },
+
+                        plotOptions: {
+                            series: {
+                                label: {
+                                    connectorAllowed: false
+                                },
+                                pointStart: new Date(data.created_at).getFullYear() -1
+                            }
+                        },
+
+                        series: [{
+                            name: data.namabarang,
+                            data: [0,data.kuantitas]
+
+                        }],
+
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 500
+                                },
+                                chartOptions: {
+                                    legend: {
+                                        layout: 'horizontal',
+                                        align: 'center',
+                                        verticalAlign: 'bottom'
+                                    }
+                                }
+                            }]
+                        }
+
+                    });
+
                 }
             });
         });

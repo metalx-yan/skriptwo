@@ -15,8 +15,8 @@
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
 
     Route::get('/', function () {
-
-        return view('admin.index');
+        $data_he = [0,222];
+        return view('admin.index', compact('data_he'));
     });
 
     Route::resource('users', 'UserController');
