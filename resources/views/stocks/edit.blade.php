@@ -18,6 +18,18 @@
 
         </div>
         <div class="card-body">
+            @php
+            if (Auth::user()->role->name == 'ppic') {
+                # code...
+                $uri = 'update.stock.ppic';
+                $uri_index = route('index.stock.ppic');
+            } else if(Auth::user()->role->name == 'purchasing'){
+                # code...
+                $uri = 'update.stock';
+                $uri_index = route('index.stock');
+            }
+            
+        @endphp
             <form action="{{ route('stocks.update', $get->id) }}" method="post">
                 @csrf
                 @method('PUT')

@@ -23,7 +23,21 @@
                 $no = 1;
             @endphp
             <div class="card-body">
-                <a href="{{ route('reports.create') }}" class="btn btn-primary btn-sm">Tambah Report</a>
+                @php
+                    if (Auth::user()->role->name == 'pimpinan') {
+                        # code...
+                        $uri = route('create.report.pimpinan');
+                        $uri_edit = 'edit.report.pimpinan';
+                        $uri_des = 'destroy.report.pimpinan';
+                    } elseif (Auth::user()->role->name == 'purchasing') {
+                        # code...
+                        $uri = route('create.report');
+                        $uri_edit = 'edit.report';
+                        $uri_des = 'destroy.report';
+                    }
+                    
+                @endphp
+                <a href="{{ $uri }}" class="btn btn-primary btn-sm">Tambah Report</a>
                 <br>
                 <br>
                 <table class="table border" id="myTable">
@@ -46,12 +60,12 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <a href="{{ route('reports.edit', $item->id) }}"
+                                            <a href="{{ route($uri_edit, $item->id) }}"
                                                 class="btn btn-warning btn-sm">Edit</a>
                                         </div>
                                         <div class="col-md-1"></div>
                                         <div class="col-md-2">
-                                            <form action="{{ route('reports.destroy', $item->id) }}" method="post">
+                                            <form action="{{ route($uri_des, $item->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"

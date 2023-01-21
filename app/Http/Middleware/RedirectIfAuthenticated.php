@@ -23,8 +23,10 @@ class RedirectIfAuthenticated
                 return redirect('/admin');
             } elseif (Auth::user()->role->name == 'ppic') {
                 return redirect('/ppic');
+            }elseif (Auth::user()->role->name == 'purchasing') {
+                return redirect('/purchasing');
             }else {
-                return redirect('/produksi');
+                return redirect('/pimpinan');
             }
         }
 

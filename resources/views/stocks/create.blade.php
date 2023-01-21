@@ -18,7 +18,19 @@
 
         </div>
         <div class="card-body">
-            <form action="{{ route('stocks.store') }}" method="post">
+            @php
+                    if (Auth::user()->role->name == 'ppic') {
+                        # code...
+                        $uri = route('store.stock.ppic');
+                        $uri_index = route('index.stock.ppic');
+                    } else if(Auth::user()->role->name == 'purchasing'){
+                        # code...
+                        $uri = route('store.stock');
+                        $uri_index = route('index.stock');
+                    }
+                    
+                @endphp
+            <form action="{{ $uri }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-3">
@@ -72,7 +84,7 @@
                 </div>
                     <br>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    <a href="{{ route('stocks.index') }}" class="btn btn-warning btn-sm">Back</a>
+                    <a href="{{ $uri_index }}" class="btn btn-warning btn-sm">Back</a>
             </form>
         </div>
     </div>
