@@ -45,7 +45,7 @@
                     <li class="nav-small-cap">PERSONAL</li>
                     <li>
                         <a class="" href="{{ url('/ppic') }}" aria-expanded="false"><i
-                                class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                                class="mdi mdi-gauge"></i><span class="hide-menu">Monitoring Stock</span></a>
                     </li>
 
 
@@ -86,7 +86,7 @@
 
                     <li>
                         <a class="" href="{{ url('/admin') }}" aria-expanded="false"><i
-                                class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                                class="mdi mdi-gauge"></i><span class="hide-menu">Monitoring Stock</span></a>
                     </li>
 
                     <li>
