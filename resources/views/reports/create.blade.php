@@ -27,6 +27,9 @@
                 # code...
                 $uri = route('store.report');
                 $uri_index = route('index.report');
+            } else {
+                $uri = route('reports.store');
+                $uri_index = route('reports.index');
             }
             
         @endphp

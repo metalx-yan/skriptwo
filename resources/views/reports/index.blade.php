@@ -34,6 +34,10 @@
                         $uri = route('create.report');
                         $uri_edit = 'edit.report';
                         $uri_des = 'destroy.report';
+                    } else {
+                        $uri = route('reports.create');
+                        $uri_edit = 'reports.edit';
+                        $uri_des = 'reports.destroy';
                     }
                     
                 @endphp
