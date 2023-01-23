@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/report/barang', 'ReportController@report')->name('report.barang');
+Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
 
@@ -24,10 +25,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('reports', 'ReportController');
     Route::resource('suppliers', 'SupplierController');
 
-    Route::get('/report/barang', 'ReportController@report')->name('report.barang');
-    Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
-
+    
 });
+
 
 Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], function() {
 
@@ -81,8 +81,8 @@ Route::group(['prefix' => 'purchasing', 'middleware' => ['auth', 'role:purchasin
     ]);
     // Route::resource('reports', 'ReportController');
     // Route::get('/report/barang', 'ReportController@report')->name('report.barang');
-    Route::get('/report/barang', 'ReportController@report')->name('report.barang');
-    Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
+    // Route::get('/report/barang', 'ReportController@report')->name('report.barang');
+    // Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
     Route::resource('suppliers', 'SupplierController', [
         'names' => [
             'index' => 'index.purchasing',
@@ -116,8 +116,8 @@ Route::group(['prefix' => 'pimpinan', 'middleware' => ['auth', 'role:pimpinan']]
             // etc...
         ]
     ]);
-    Route::get('/report/barang', 'ReportController@report')->name('report.barang');
-    Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
+    // Route::get('/report/barang', 'ReportController@report')->name('report.barang');
+    // Route::post('/reportzz', 'ReportController@reportzz')->name('reportzz');
    
 });
 Route::get('/', function () {

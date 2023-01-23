@@ -70,7 +70,7 @@
         $("#barang").on('change', function(e) { // 2nd way
             var val = e.target.value
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            // console.log(CSRF_TOKEN)
+            console.log(val)
             $.ajax({
                 /* the route pointing to the post function */
                 url: '{{ route('reportzz') }}',

@@ -67,6 +67,7 @@ class ReportController extends Controller
     public function reportzz(Request $request)
     {
         $get = Report::find($request->id);
+        // dd($get);
         return json_encode($get);
     }
     /**
