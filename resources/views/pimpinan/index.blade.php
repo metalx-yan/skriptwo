@@ -90,10 +90,11 @@
                     } else {
                         $('#qty').val(data.kuantitas + ' Kg')
                         if (data.kuantitas > '200') {
-                            $('#status').val('Stock Tersedia')
+                            $('#status').val('Stocked').css("backgroundColor", "green").css("color", "white")
                         } else {
-                            $('#status').val('Stock Tidak Tersedia')
+                            $('#status').val('Need Stock').css("backgroundColor", "red").css("color", "white")
                         }
+
 
                     }
 
